@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    margin: 2%;
+}
+
+.registration h1 {
+    color: rgba(255, 68, 0, 0.9);
+}
+
+.registration {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    background-image: linear-gradient(to right, rgb(251, 213, 201), rgb(233, 245, 255));
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.registration ul {
+    list-style: none;
+}
+
+.alert ul li {
+    color: red;
+}
+
+p a,
+p a:visited {
+    color: orangered;
+    text-decoration: none;
+}
+
+p a:hover,
+p a:focus {
+    color: rgba(255, 68, 0, 0.7);
+}
+
+.signup-link {
+    text-align: center;
+    font-style: italic;
+}
