@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Profile Update | HelloWorld
+{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data" class="profile_pic_form">
+    {{form|crispy}}
+    {%csrf_token%}
+    <input type="submit" value="Save Changes" class="btn btn-success">
+</form>
+{% endblock %}

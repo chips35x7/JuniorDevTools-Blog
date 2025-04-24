@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+
+{% block title %}
+About | HelloWorld
+{% endblock %}
+
+{% block content %}
+
+<!-- Brief Description about Blog -->
+<div class="container-fluid bg-secondary text-white p-5 text-center" style="width: 100%;">
+    <div class="col">
+        <h1 class="display-2">
+            <span style="color: rgb(232, 163, 139);">ABOUT<strong>
+        </h1>
+        <h1 class="display-4" style="color:#5cb15f;"></h1>
+        <hr>
+        <p class="lead" style="width: 80%; margin: auto;">
+            Welcome to <strong><span style="color: #333;"><em>Hello</span>World!</em></strong> Blog,
+            where I share my passion for coding with the world. I'm Nigel, a software developer
+            with a love for learning and sharing knowledge with others. On this blog, you'll find articles
+            and stories about all sorts of topics ranging from educational discoveries to shared life
+            experiences from people of different backgrounds, all written with the goal of inspiring, educating
+            and entertaining. <br>I'm excited to share my ideas and experiences with you, and I hope you'll join
+            the conversation! <br>See you around ;-)
+        </p>
+    </div>
+</div>
+<br>
+
+<!-- About the Author -->
+<h1 class="display-5">About Author</h1>
+<ul>
+    <li class="lead">Name: <em>Nigel C Chiputura</em></li>
+    <li class="lead">Education: <em>Currently a computer science student at the University of Zimbabwe</em></li>
+    <li class="lead">Expertise: <em>Web development practices and Database Design principles</em></li>
+    <li class="lead">Interests: <em>Cycling, Gaming, Music, Personal development, Technology</em></li>
+</ul>
+
+<!-- About the Blog -->
+<h1 class="display-5">Contact Informantion</h1>
+<address class="lead">
+    Email: <a style="color: orangered;" href="mailto:chiputuranigel@gmail.com">chiputuranigel@gmail.com</a><br>
+    Cell: <a style="color: orangered;" href="tel:+263780734710">+263 78 073 4710</a>
+</address>
+{% endblock %}

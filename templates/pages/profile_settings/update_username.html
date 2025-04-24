@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Profile Update | HelloWorld
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" style="width: 50%;">
+        <h1 class="display-5"><strong style="color: #777;">Change Username</strong></h1>
+        <br>
+        {%csrf_token%}
+        {{form|crispy}}
+        <input type="submit" value="Save Changes" class="btn btn-outline-success">
+    </form>
+{% endblock %}

@@ -9,4 +9,5 @@ class Users(AbstractUser):
         default=uuid.uuid4,
         editable=False
     )
-    # profile_picture = models.ImageField(default='fallback.png', upload_to='user_profile_pic/', blank=True)
+    middle_name = models.CharField(max_length=150, blank=True, null=True)
+    profile_picture = models.ImageField(default='fallback.png', upload_to='user_profile_pictures/', blank=True)

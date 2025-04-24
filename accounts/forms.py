@@ -31,9 +31,3 @@ class UserCreationForm(UserCreationForm):
         labels = {
             'username':''
         }
-
-
-class UserChangeForm(UserChangeForm):
-    class Meta:
-        model = get_user_model()
-        fields = UserChangeForm.Meta.fields

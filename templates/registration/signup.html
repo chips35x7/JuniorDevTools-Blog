@@ -4,8 +4,9 @@
 {% block title %}SignUp | HelloWorld{% endblock %}
 
 {% block content %}
-    <form action="" method="post" class="registration">
+    <form action="" method="post" class="registration" style="min-width: 300px;">
         <h1>SignUp*</h1><br>
+        {%csrf_token%}
         {{form|crispy}}<br>
         <input type="submit" value="SignUp" class="btn btn-success">
     </form>

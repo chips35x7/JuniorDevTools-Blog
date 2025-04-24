@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    Deactivate Account
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        <h1 class="display-5">
+            <strong style="color: #777;">
+                Account Deactivate
+            </strong>
+        </h1>
+        <br>
+        <p class="lead">
+            *Are you sure you want to deactivate your account '{{user.username}}' ?<br>
+            *The only way to unsuspend your account is to contact the support team.<br>
+            *Contact information for the support team can be found on the about page.<br>
+            <strong style="color: #ffc107;">Proceed with caution!</strong>
+        </p>
+        <br>
+        {%csrf_token%}
+        <input type="submit" value="Deactivate Account" class="btn btn-warning">
+    </form>
+{% endblock %}
