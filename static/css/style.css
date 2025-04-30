@@ -9,14 +9,15 @@
 }
 
 .registration h1 {
-    color: rgba(255, 68, 0, 0.6);
+    color: white;
+    font-weight: 400;
 }
 
 .registration {
     text-align: center;
     width: 60%;
     margin: auto;
-    background-image: linear-gradient(to right, rgb(251, 213, 201), rgb(233, 245, 255));
+    background-image: linear-gradient(to right, #333, #777);
     padding: 50px;
     border-radius: 10px;
 }
@@ -25,19 +26,26 @@
     list-style: none;
 }
 
+#id_username_helptext,
+#id_password1_helptext,
+#id_password2_helptext {
+    color: white;
+}
+
+
 .alert ul li {
     color: red;
 }
 
 p a,
 p a:visited {
-    color: orangered;
+    color: orange;
     text-decoration: none;
 }
 
 p a:hover,
 p a:focus {
-    color: rgb(153, 56, 20);
+    color: rgb(255, 114, 63);
 }
 
 .signup-link {
@@ -65,14 +73,22 @@ p a:focus {
     color: white;
 }
 
-.about img {
-    float: left;
+.settings:active {
+    background-color: #777;
+}
+
+.settings img {
+    float: right;
     width: 25px;
     height: 25px;
 }
 
-.settings img {
-    float: left;
+.about:active {
+    background-color: #777;
+}
+
+.about img {
+    float: right;
     width: 25px;
     height: 25px;
 }
@@ -103,4 +119,3 @@ label[for="id_profile_picture"],
 label[for="profile_picture-clear_id"] {
     display: none;
 }
-

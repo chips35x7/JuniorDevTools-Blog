@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 About | HelloWorld
@@ -7,20 +8,22 @@ About | HelloWorld
 {% block content %}
 
 <!-- Brief Description about Blog -->
-<div class="container-fluid bg-secondary text-white p-5 text-center" style="width: 100%;">
+<div class="container-fluid bg-dark text-white p-5 text-center" style="width: 100%;">
     <div class="col">
         <h1 class="display-2">
-            <span style="color: rgb(232, 163, 139);">ABOUT<strong>
+            <span style="color: rgb(84, 84, 131)">ABOUT<strong>
         </h1>
         <h1 class="display-4" style="color:#5cb15f;"></h1>
         <hr>
         <p class="lead" style="width: 80%; margin: auto;">
-            Welcome to <strong><span style="color: #333;"><em>Hello</span>World!</em></strong> Blog,
+            Welcome to <strong style="font-family: monospace;"><span style="color: #777">Junior</span><span
+                    style="color: rgb(220, 210, 210)">Dev</span><span
+                    style="color: rgb(84, 84, 131)">Tools</span></strong>. A Blogging platform
             where I share my passion for coding with the world. I'm Nigel, a software developer
-            with a love for learning and sharing knowledge with others. On this blog, you'll find articles
-            and stories about all sorts of topics ranging from educational discoveries to shared life
-            experiences from people of different backgrounds, all written with the goal of inspiring, educating
-            and entertaining. <br>I'm excited to share my ideas and experiences with you, and I hope you'll join
+            with a love for learning and sharing knowledge with others. On this platform, you'll find step by step
+            tutorials on coding concepts, articles on best programming practices for improving your skills
+            and reviews of tools and resources that can help you on your journey.
+            <br>I'm excited to share my ideas and experiences with you, and I hope you'll join
             the conversation! <br>See you around ;-)
         </p>
     </div>
@@ -28,18 +31,77 @@ About | HelloWorld
 <br>
 
 <!-- About the Author -->
-<h1 class="display-5">About Author</h1>
+<h1 class="display-5">My Story</h1>
+<p class="lead">
+    I started coding not too long ago, and I've been hooked ever since.<br>I've been learning
+    through online courses, video tutorials, books and personal projects. <br>As I've grown in my skills,
+    I've realized how much I want to help <br>and connect with others who are just starting out as well.
+</p>
+<br>
+<h1 class="display-5">About Me</h1>
 <ul>
     <li class="lead">Name: <em>Nigel C Chiputura</em></li>
     <li class="lead">Education: <em>Currently a computer science student at the University of Zimbabwe</em></li>
-    <li class="lead">Expertise: <em>Web development practices and Database Design principles</em></li>
+    <li class="lead">Expertise: <em>Web development practices (particularly backend development) <br>and Database Design
+            principles</em></li>
+    <li class="lead">Notable Skills: <em>Indie game developer, Devops practices</em></li>
     <li class="lead">Interests: <em>Cycling, Gaming, Music, Personal development, Technology</em></li>
 </ul>
-
+<br>
+<h1 class="display-5">Why This Blog?</h1>
+<p class="lead">
+    I created this blog to share my experiences, successes, and, failures with you. <br>Not just me but anyone else
+    who wants to join in can share. I'll be writing about the things <br>I'm learning, the challenges I'm facing
+    and the resources that I find helpful. <br>My goal is to provide valuable insights and and advice to others in
+    similar stituations to mine. <br>I also aim to create somewhat of a community for those like me by allowing others
+    <br>to also share their experiences and how they are coping.
+</p>
+<br>
+<h1 class="display-5">What You'll Find Here</h1>
+<p class="lead">On this blog you can expect to find:</p>
+<ul>
+    <li class="lead">Tutorials and guides on various coding topics such as web development</li>
+    <li class="lead">Personal anecdotes and stories about my and other developer's coding journey</li>
+    <li class="lead">Tips and advice that can help junior developers such as myself and others</li>
+    <li class="lead">
+        A section where I'll be sharing custom software that can help with everyday computing tasks <br>and some games
+        that
+        I made.
+    </li>
+</ul>
+<br>
+<h1 class="display-5">Let's Learn Together</h1>
+<p class="lead">
+    I'm not an expert, but I'm eager to learn and share my findings with you. <br>I hope you'll join
+    me on this journey, and also share your story and experiences as well. <br>Let's learn and grow together!
+</p>
+<br>
 <!-- About the Blog -->
 <h1 class="display-5">Contact Informantion</h1>
+<p class="lead">
+    *Get in touch and feel free to notify me of any concerns. <br>*You can also user the Feedback form below to
+    submit and notify of any queries and or concerns.
+</p>
 <address class="lead">
     Email: <a style="color: orangered;" href="mailto:chiputuranigel@gmail.com">chiputuranigel@gmail.com</a><br>
     Cell: <a style="color: orangered;" href="tel:+263780734710">+263 78 073 4710</a>
 </address>
+<br>
+<!-- User Feedback -->
+<form action="" method="post" style="width: 80%;">
+    <h1 class="display-5">Give Feedback</h1>
+    <p class="lead">*Please let me know how you think I can improve the overall quality of the blog.<br>*I would love to
+        here your thoughts.</p>
+    {%csrf_token%}
+    {{form|crispy}}
+    {% if user.is_authenticated %}
+    <input type="submit" value="Submit" class="btn btn-success">
+    {% else %}
+    <p class="lead">
+        You have to be logged in to submit Feedback. <a style="color: orangered;" href="{% url 'login' %}">Click here to
+            login.</a>
+    </p>
+    {%endif%}
+</form>
+
 {% endblock %}

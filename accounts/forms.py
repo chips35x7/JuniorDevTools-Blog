@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model, password_validation
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
-class UserCreationForm(UserCreationForm):
+class UserSignUpForm(UserCreationForm):
     password1 = forms.CharField(
         label="",
         strip=False,
@@ -24,10 +24,12 @@ class UserCreationForm(UserCreationForm):
     )
     class Meta:
         model = get_user_model()
-        fields = UserCreationForm.Meta.fields
+        fields = UserCreationForm.Meta.fields + ('email',)
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder':'Username'})
+            'username': forms.TextInput(attrs={'placeholder':'Username'}),
+            'email': forms.TextInput(attrs={'placeholder':'Email (*Optional)'})
         }
         labels = {
-            'username':''
+            'username':'',
+            'email':''
         }

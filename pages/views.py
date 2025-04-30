@@ -1,10 +1,12 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView, View
 from django.views.generic.edit import UpdateView
+from django.views.generic.detail import SingleObjectMixin
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 
+from .forms import FeedBackForm
 
 USER_MODEL = get_user_model()
 
@@ -13,8 +15,16 @@ class HomePageView(TemplateView):
     template_name = 'pages/home.html'
 
 
-class AboutPageView(TemplateView):
+class AboutPageView(FormView):
     template_name = 'pages/about.html'
+    form_class = FeedBackForm
+    success_url = reverse_lazy('about')
+
+    def form_valid(self, form):
+        feedback = form.save(commit=False)
+        feedback.user = self.request.user
+        feedback.save()
+        return super().form_valid(form)
 
 
 class SettingsView(LoginRequiredMixin, TemplateView):

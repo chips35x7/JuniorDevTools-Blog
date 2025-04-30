@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # My APPS
     'accounts.apps.AccountsConfig',
+    'pages.apps.PagesConfig',
 
     # Default APPS
     'django.contrib.admin',

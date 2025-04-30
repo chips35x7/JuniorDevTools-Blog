@@ -49,38 +49,44 @@
 
   <!-- DIVIDE -->
 
-  <!-- <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark"> -->
-  <nav class="navbar navbar-dark navbar-expand-lg" style="
+  <nav class="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
+    <!-- <nav class="navbar navbar-dark navbar-expand-lg" style="
       background-color: rgb(232, 163, 139);
-      padding-left: 10px;
-      padding-right: 10px;
-    ">
+    padding-left: 10px;
+    padding-right: 10px;
+    "> -->
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home' %}"><em>
-          <strong><span style="color: #333">Hello</span>World!</strong>
-        </em></a>
+      <a class="navbar-brand" href="{% url 'home' %}" style="font-family: monospace;">
+        <strong><span style="color: #777">Junior</span><span style="color: rgb(220, 210, 210)">Dev</span><span
+            style="color: rgb(84, 84, 131)">Tools</span></strong>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if not user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" aria-current="page" href="{% url 'about' %}">About</a>
           </li>
+          {%endif%}
           {% if user.is_authenticated %}
-          <li><a href="#" class="nav-link px-2 link-dark">+ New</a></li>
+          <li><a href="#" class="nav-link px-2 link-light">+ New Post</a></li>
         </ul>
         <div class="mr-auto">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
+              <img style="float: left; border-radius: 30px;" src="{{ user.profile_picture.url }}" width="40px"
+                height="40px">
               <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+                aria-expanded="false" style="display: flow-root;">
                 {{ user.username }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                  <a class="about dropdown-item" href="{% url 'about' %}"><img src="{% static 'images/info3.png' %}">
+                  <a class="about dropdown-item" href="{% url 'about' %}"><img class="bg-dark"
+                      src="{% static 'images/info2(bg-dark).png' %}">
                     About
                   </a>
                 </li>
@@ -98,8 +104,8 @@
         </div>
         <div class="mr-auto">
           <form class="form d-flex">
-            <a href="{% url 'login' %}" class="btn btn-outline-light">Log in</a>
-            <a href="{% url 'signup' %}" class="btn btn-info ms-2">Sign up</a>
+            <a href="{% url 'login' %}" class="btn btn-light" style="margin-left: 3px;">Log in</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary ms-2">Sign up</a>
           </form>
         </div>
         {% endif %}

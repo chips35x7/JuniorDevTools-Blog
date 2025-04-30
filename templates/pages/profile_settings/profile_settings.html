@@ -7,66 +7,58 @@
 <div class="row">
   <div class="col">
     <p class="display-5" style="color: #777; margin-top: 20px">
-        <strong>User Profile</strong>
+      <strong>User Profile</strong>
     </p>
     <div class="card" style="width: 18rem; text-align: center;">
-      <img
-        class="card-img-top"
-        src="{{user.profile_picture.url}}"
-        alt="Profile Picture"
-      />
-      <a href="{% url 'update_profile_pic' %}" class="btn btn-primary" style="border-radius: 0"
-        >Update Profile Picture</a
-      >
+      <img class="card-img-top" src="{{user.profile_picture.url}}" alt="Profile Picture" />
+      <a href="{% url 'update_profile_pic' %}" class="btn btn-primary" style="border-radius: 0">Update Profile
+        Picture</a>
       <div class="card-body">
         <h5 class="card-title">{{user.username}}</h5>
         <hr />
         {% if user.email %}
         <p class="card-text">
-            Email: <em>{{user.email}}</em>
+          Email: <em>{{user.email}}</em>
         </p>
         {% else %}
         <p class="card-text"><a href="{% url 'update_email' %}">+Add an email address</a></p>
         {%endif%} {% if user.first_name %}
         <p class="card-text">
-        F.Name: <em>{{user.first_name}}</em>
+          F.Name: <em>{{user.first_name}}</em>
         </p>
         {% else %}
         <p class="card-text"><a href="{% url 'update_f_name' %}">+Add your first name</a></p>
-        {%endif%} 
-        {% if user.last_name %} 
-         <p class="card-text">
-        L.Name: <em>{{user.last_name}}</em>
+        {%endif%}
+        {% if user.last_name %}
+        <p class="card-text">
+          L.Name: <em>{{user.last_name}}</em>
         </p>
         {% else %}
         <p class="card-text"><a href="{% url 'update_l_name' %}">+Add your last name</a></p>
         {%endif%}
-        {% if user.middle_name %} 
-         <p class="card-text">
-        M.Name: <em>{{user.middle_name}}</em>
+        {% if user.middle_name %}
+        <p class="card-text">
+          M.Name: <em>{{user.middle_name}}</em>
         </p>
         {% else %}
         <p class="card-text">*If Applicable<br><a href="{% url 'update_m_name' %}">+Add your middle name</a></p>
         {%endif%}
         <hr />
-        <p class="card-text">Account created: {{user.date_joined}}</p>
+        <p class="card-text">Account created: {{user.date_joined|date:'d F Y'}}</p>
       </div>
     </div>
-  {% if not user.email %}
+    {% if not user.email %}
     <p class="lead" style="width: 80%; color: rgb(208, 0, 0);">
-        *It is highly recommended to add an email address in case you forget your
-        password!
-      </p>
-      {%endif%}
+      *It is highly recommended to add an email address in case you forget your
+      password!
+    </p>
+    {%endif%}
   </div>
 
-<!-- User Profile Edit -->
+  <!-- User Profile Edit -->
 
   <div class="col">
-    <div
-      class="card border-secondary mb-3"
-      style="max-width: 18rem; margin: 20px 0; text-align: center;"
-    >
+    <div class="card border-secondary mb-3" style="max-width: 18rem; margin: 20px 0; text-align: center;">
       <div class="card-header display-5 bg-transparent border-secondary">
         <strong style="color: #777">Edit Profile</strong>
       </div>
@@ -84,7 +76,7 @@
         {%endif%} {% if user.first_name %}
         <hr />
         <p class="card-text"><a href="{% url 'update_f_name' %}">Edit First Name</a></p>
-        {%endif%} 
+        {%endif%}
         {% if user.last_name %}
         <hr />
         <p class="card-text"><a href="{% url 'update_l_name' %}">Edit Last Name</a></p>
@@ -97,37 +89,33 @@
     </div>
     <br>
 
-<!-- User Privacy Settings -->
-      <hr>
-      <p class="display-5" style="color: #777; margin-top: 20px">
-        <strong>Privacy Settings</strong>
-      </p>
-      <hr>
-      <p class="lead">*Control who can see your content</p>
-      <input type="radio" style="display: inline-block;"> Private Account
-      <br>
-      <input type="radio" style="display: inline-block;"> Public Account
-      <br><br>
+    <!-- User Privacy Settings -->
+    <hr>
+    <p class="display-5" style="color: #777; margin-top: 20px">
+      <strong>Privacy Settings</strong>
+    </p>
+    <hr>
+    <p class="lead">*Control who can see your content</p>
+    <input type="radio" style="display: inline-block;"> Private Account
+    <br>
+    <input type="radio" style="display: inline-block;"> Public Account
+    <br><br>
 
-<!-- User Account Management -->
-      <hr>
-      <p class="display-5" style="color: #777; margin-top: 20px">
-        <strong>Account Management</strong>
-      </p>
-      <hr>
-      <p class="lead">*Log out of your account</p>
-      <form action="{% url 'logout'%}" method="post">
-        {%csrf_token%}
-        <input
-          type="submit"
-          value="Log Out"
-          class="btn btn-warning"
-        />
-      </form>
-      <br>
-      <p class="lead">*Deactivate your account or Delete account</p>
-      <a href="{% url 'account_deactivate' %}" class="btn btn-warning">Deactivate Profile</a><br><br>
-      <a href="{% url 'account_delete' %}" class="btn btn-danger">Delete Account</a>
+    <!-- User Account Management -->
+    <hr>
+    <p class="display-5" style="color: #777; margin-top: 20px">
+      <strong>Account Management</strong>
+    </p>
+    <hr>
+    <p class="lead">*Log out of your account</p>
+    <form action="{% url 'logout'%}" method="post">
+      {%csrf_token%}
+      <input type="submit" value="Log Out" class="btn btn-warning" />
+    </form>
+    <br>
+    <p class="lead">*Deactivate your account or Delete account</p>
+    <a href="{% url 'account_deactivate' %}" class="btn btn-warning">Deactivate Profile</a><br><br>
+    <a href="{% url 'account_delete' %}" class="btn btn-danger">Delete Account</a>
   </div>
 </div>
 {% endblock %}

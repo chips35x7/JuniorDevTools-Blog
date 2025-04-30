@@ -7,14 +7,14 @@ LogIn | HelloWorld
 {% endblock %}
 
 {% block content %}
-    <form action="" method="post" class="registration" style="min-width: 300px;">
-        <h1>LogIn*</h1><br>
-        {%csrf_token%}
-        <p>Enter your username and password to continue.</p>
-        {{form|crispy}}<br>
-        <input type="submit" value="LogIn" class="btn btn-success"><br><br>
-        <p><a href="{%url 'password_reset'%}">Forgot your password?</a></p>
-    </form>
-    <p class="signup-link">Don't have an account? <a href="{% url 'signup' %}">Sign up for free and start posting today!</a></p>
+<form action="" method="post" class="registration" style="min-width: 300px;">
+    <h1 class="display-3">LogIn*</h1><br>
+    {%csrf_token%}
+    <p style="color: white;">Enter your username and password to continue.</p>
+    {{form|crispy}}<br>
+    <input type="submit" value="LogIn" class="btn btn-light"><br><br>
+    <p><a href="{%url 'password_reset'%}">Forgot your password?</a></p>
+</form>
+<p class="signup-link">Don't have an account? <a href="{% url 'signup' %}">Sign up for free and start posting today!</a>
+</p>
 {% endblock %}
-

@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .forms import UserCreationForm
+from .forms import UserSignUpForm
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -9,7 +9,7 @@ USER_MODEL = get_user_model()
 
 
 class SignUpView(CreateView):
-    form_class = UserCreationForm
+    form_class = UserSignUpForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('home')
 
@@ -44,4 +44,3 @@ class AccountDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset = None):
         obj = get_object_or_404(USER_MODEL, pk=self.request.user.pk, username=self.request.user.username)
         return obj
-    
