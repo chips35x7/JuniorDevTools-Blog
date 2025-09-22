@@ -14,7 +14,7 @@
     min-height: 80vh;
     display: grid;
     place-content: center;
-    @include heavyTextShadowEffect;
+    text-shadow: 0px 2px 3px #000;
 
     .hero-section {
         max-width: 80%;
@@ -23,7 +23,10 @@
     }
 
     .display-4 {
+        
         span {
+            font-weight: 600;
+
             &:first-child {
                 color: $logo-color-1;
             }
