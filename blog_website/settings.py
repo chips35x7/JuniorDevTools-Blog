@@ -190,14 +190,14 @@ JAZZMIN_SETTINGS = {
 # Backend Storage
 STORAGES = {
     "default": {
-        "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
-# Authentication Backends
+# Authentication Ba
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
