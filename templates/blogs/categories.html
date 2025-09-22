@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Blog Categories | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<section class="p-3">
+
+    <h1 class="display-4 pt-5 p-3"><strong>Blog Categories</strong></h1>
+    <hr>
+
+    <br>
+
+    {% for category in categories %}
+
+    <h1 class="display-6">
+        <a href="{% url 'blog_category' category.pk %}" style="text-decoration: none;"><strong>{{category}}</strong></a>
+    </h1>
+    <br>
+
+    {{blog}}
+    {% endfor %}
+
+</section>
+{% endblock %}

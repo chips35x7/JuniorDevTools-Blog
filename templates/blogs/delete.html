@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Blog Delete | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<form action="" method="post" class="blog-form pt-5 p-3">
+
+    <h1 class="display-4"><strong>Delete Blog</strong></h1>
+    <br>
+
+    {%csrf_token%}
+
+    <p class="lead">Are you sure you want to delete the blog post '{{blog}}' ?</p>
+
+    <form class="form d-flex blog-status">
+
+        <input type="submit" value="Yes" class="btn btn-outline-danger">
+        <a href="{% url 'blog_detail' blog.pk %}" class="btn btn-outline-secondary">No</a>
+
+    </form>
+
+</form>
+{% endblock %}

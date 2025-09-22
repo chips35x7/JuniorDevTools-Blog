@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+from environs import Env
+
+env = Env()
+env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--s#4^9qmrn+8(v^8py@dv7k!s0v76y#g^!-j#_e%%a=yi+$bq6'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '.onrender.com']
 
 
 # Application definition
@@ -35,8 +40,10 @@ INSTALLED_APPS = [
     # My APPS
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
+    'blogs.apps.BlogsConfig',
 
     # Default APPS
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,7 +72,7 @@ ROOT_URLCONF = 'blog_website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,15 +92,8 @@ WSGI_APPLICATION = 'blog_website.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hello_world',
-        'USER': 'root',
-        'PASSWORD': 'Heather1021',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'default': env.dj_db_url('DATABASE_URL')
     }
-}
 
 
 # Password validation
@@ -131,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -151,5 +151,30 @@ LOGOUT_REDIRECT_URL = "home"
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-# Email configurations
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# Email Configurations
+SERVER_EMAIL = env.str('SERVER_EMAIL')
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
+EMAIL_USE_LOCALTIME = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Jazzmin Settings / Admin Customization
+JAZZMIN_SETTINGS = {
+    'site_title': 'JuniorDevTools',
+    'site_header': 'JuniorDevTools',
+
+    'site_brand': 'JuniorDevTools',
+
+    'copyright': 'CodeWithNigey',
+
+    # 'topmenu_links': [
+    #     {'app': 'portfolio'}
+    # ],
+
+    'show_ui_builder': True,
+}

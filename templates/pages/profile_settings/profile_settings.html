@@ -1,16 +1,17 @@
 {% extends '_base.html' %}
+
 {% block title %} Settings | HelloWorld {% endblock%}
 {% block content %}
 
 <!-- User Profile View -->
 
-<div class="row">
+<div class="row pt-5">
   <div class="col">
     <p class="display-5" style="color: #777; margin-top: 20px">
       <strong>User Profile</strong>
     </p>
-    <div class="card" style="width: 18rem; text-align: center;">
-      <img class="card-img-top" src="{{user.profile_picture.url}}" alt="Profile Picture" />
+    <div class="card mx-auto" style="width: 18rem; text-align: center;">
+      <img class="card-img-top w-75" src="{{user.profile_picture.url}}" alt="Profile Picture" style=" margin: auto" />
       <a href="{% url 'update_profile_pic' %}" class="btn btn-primary" style="border-radius: 0">Update Profile
         Picture</a>
       <div class="card-body">
@@ -58,7 +59,7 @@
   <!-- User Profile Edit -->
 
   <div class="col">
-    <div class="card border-secondary mb-3" style="max-width: 18rem; margin: 20px 0; text-align: center;">
+    <div class="card border-secondary mb-3 mx-auto" style="max-width: 18rem; margin: 20px 0; text-align: center;">
       <div class="card-header display-5 bg-transparent border-secondary">
         <strong style="color: #777">Edit Profile</strong>
       </div>
@@ -96,9 +97,12 @@
     </p>
     <hr>
     <p class="lead">*Control who can see your content</p>
-    <input type="radio" style="display: inline-block;"> Private Account
-    <br>
-    <input type="radio" style="display: inline-block;"> Public Account
+    <form method="post">
+      {%csrf_token%}
+      {{form}}
+      <br>
+      <input type="submit" value="Confirm Account Status" class="btn btn-success">
+    </form>
     <br><br>
 
     <!-- User Account Management -->

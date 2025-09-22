@@ -1,0 +1,128 @@
+<!-- <ul class="sidebar" style="min-height: 100vh;">
+    <hr>
+    <li class="content lead">
+        <h1 class="" style="font-size: 1.2rem;"><strong>*Navigation</strong></h1>
+    </li>
+    <hr> -->
+<!-- Sidebar components
+    <li class="lead content" style="font-size: 1.1rem;"><a href="{% url 'blog_create' %}">+ New Blog Post</a></li>
+    <li class="lead content" style="font-size: 1.1rem;"><a href="{% url 'blog_list' %}">View All Blogs</a></li>
+    <li class="lead content" style="font-size: 1.1rem;"><a href="{% url 'my_blogs' %}">View My Blogs</a></li> -->
+<!-- <li class="lead content" style="font-size: 1.1rem;"><a href="#">Video Tutorials</a></li>
+    <li class="lead content" style="font-size: 1.1rem;"><a href="#">Free Resources</a></li>
+    <li class="lead content" style="font-size: 1.1rem;"><a href="#">Utility Apps</a></li>
+    <li class="lead content" style="font-size: 1.1rem;"><a href="#">Games</a></li> -->
+<!-- </ul> -->
+
+<style>
+    .sidebar {
+        text-align: center;
+        font-family: monospace;
+        font-size: 1.5rem;
+        font-weight: bold;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: rgb(84, 84, 131);
+        padding: 20px;
+        transform: translateX(-250px);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    .sidebar-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-nav li {
+        color: #fff;
+    }
+
+    .sidebar-nav hr {
+        color: #fff;
+    }
+
+    .sidebar-nav .content {
+        margin-bottom: 50px;
+        font-size: 1.1rem;
+    }
+
+    .sidebar-nav a {
+        color: #cbbebe;
+        text-decoration: none;
+    }
+
+    .sidebar-nav a:hover {
+        color: #fff;
+    }
+
+    .sidebar-toggle {
+        position: absolute;
+        top: 110px;
+        right: -30px;
+        background-color: rgb(84, 84, 131);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .sidebar-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+        margin-bottom: 5px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        padding-left: 100px;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content.shift {
+        margin-left: 250px;
+        padding-left: 100px;
+    }
+</style>
+
+<div class="sidebar">
+    <button class="sidebar-toggle" id="sidebar-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="sidebar-nav pt-5">
+        <hr>
+        <li class="lead">
+            <h1 style="font-size: 1.2rem;"><strong>*Sidebar</strong></h1>
+        </li>
+        <hr>
+        <br>
+        <li class="lead content"><a href="{% url 'blog_create' %}">+ New Blog Post</a></li>
+        <li class="lead content"><a href="{% url 'blog_categories' %}">View Categories</a></li>
+        <li class="lead content"><a href="{% url 'blog_list' %}">View All Blogs</a></li>
+        <li class="lead content"><a href="{% url 'my_blogs' %}">View My Blogs</a></li>
+        <!-- <li class="lead content"><a href="#">Video Tutorials</a></li>
+        <li class="lead content"><a href="#">Free Resources</a></li>
+        <li class="lead content"><a href="#">Utility Apps</a></li>
+        <li class="lead content"><a href="#">Games</a></li>
+    </ul> -->
+</div>
+
+<script>
+    document.getElementById('sidebar-toggle').addEventListener('click', function () {
+        document.querySelector('.sidebar').classList.toggle('show');
+        document.querySelector('.main-content').classList.toggle('shift');
+    });
+</script>

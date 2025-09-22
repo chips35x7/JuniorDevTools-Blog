@@ -21,13 +21,15 @@ from django.conf import settings
 
 
 urlpatterns = [
-    # Url pattern for the admin app
+    # Url patterns for the admin app
     path('admin/', admin.site.urls),
     # Url patterns for user authentication
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
-    # Url pattern for static pages
+    # Url patterns for pages app
     path('', include('pages.urls')),
+    # Url patterns for blogs app
+    path('blogs/', include('blogs.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

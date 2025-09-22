@@ -1,0 +1,267 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.controls {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include media-breakpoint-down(md) {
+        top: auto;
+        bottom: 0;
+        flex-direction: row;
+        justify-content: center;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+
+        .control {
+            margin: 1rem 0.3rem;
+        }
+    }
+
+    .active-btn {
+        background-color: $secondary !important;
+        transition: $transition;
+        transform: scale(1.5);
+
+        i {
+            color: $white;
+        }
+    }
+
+    .control {
+        padding: 1rem;
+        cursor: pointer;
+        background-color: $gray-600;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        display: grid !important;
+        place-content: center;
+        margin: 0.7rem 0;
+        box-shadow: $box-shadow-1;
+        margin-right: 5px;
+
+        &:is(:hover, :focus) {
+            transform: scale(1.5);
+
+            p {
+                display: block;
+                font-size: 0.7rem;
+            }
+        }
+
+        i {
+            font-size: 1.2rem;
+            color: $gray-200;
+            pointer-events: none;
+        }
+
+        p {
+            position: absolute;
+            right: 100%;
+            background-color: $white;
+            color: $dark;
+            padding: 0 5px;
+            border-radius: 3px;
+            display: none;
+
+            @include media-breakpoint-down(md) {
+                right: 0;
+                bottom: 80%;
+            }
+        }
+    }
+}
+
+.btn-container{
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    cursor: pointer;
+
+    .main-btn {
+        min-width: 250px;
+        border-radius: 30px;
+        font-weight: 600;
+        position: relative;
+        border: 1px solid $secondary;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: $white;
+        padding: 0.7rem 0;
+        @include lightShadowEffect;
+
+        // @media (prefers-color-scheme: light) {
+        //     color: $dark;
+        // }
+
+        span {
+            pointer-events: none;
+            &:first-child {
+                padding: 0 2rem;
+            }
+            &:last-child {
+                background-color: $secondary;
+                color: $white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                padding: 1rem;
+                position: absolute;
+                right: 0;
+            }
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateX(100%);
+            transition: $transition;
+            z-index: -1;
+        }
+        &:is(:hover, :focus) {
+            color: $white;
+
+            &::before {
+                width: 100%;
+                height: 100%;
+                background-color: $secondary;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .general-btn {
+        border-radius: 30px;
+        font-weight: 600;
+        position: relative;
+        border: 1px solid $secondary;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        color: $white;
+
+        // @media (prefers-color-scheme: light) {
+        //     color: $dark;
+        // }
+
+        span {
+            &:first-child {
+                padding: 0 2rem;
+            }
+            &:last-child {
+                background-color: $secondary;
+                color: $white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                padding: 1rem;
+            }
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateX(100%);
+            transition: $transition;
+            z-index: -1;
+        }
+        &:is(:hover, :focus) {
+            color: $white;
+
+            &::before {
+                width: 100%;
+                height: 100%;
+                background-color: $secondary;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .socials {
+        min-width: 250px;
+        border-radius: 30px;
+        font-weight: 600;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        // color: ghostwhite;
+        // padding: 0.7rem 0;
+
+        a {
+            margin: auto;
+            font-size: 1.5rem;
+            color: ghostwhite;
+
+            &:is(:hover, :focus) {
+                color: lime;
+            }
+        }
+    }
+}
+
+
+.category-btn {
+    min-width: 150px;
+    margin-right: 1rem;
+}
+
+.theme-btn {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    z-index: 10000000;
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    background-color: $white;
+    display: grid;
+    place-content: center;
+    @include lightShadowEffect;
+    transition: all .1s ease-in-out;
+
+    &:active {
+        transform: translateY(-5px);
+    }
+
+    i {
+        font-size: 1.5rem;
+        color: $black;
+        pointer-events: none;
+    }
+}
+
+.light-mode {
+    .btn-container {
+        .main-btn, .general-btn {
+            color: $dark;
+
+            &:hover {
+                color: $white;
+            }
+        }
+        .socials a {
+            color: $accent;
+
+            &:is(:hover, :focus) {
+                color: lime;
+            }
+        }
+    }   
+}

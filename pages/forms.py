@@ -8,7 +8,7 @@ class FeedBackForm(forms.ModelForm):
         model = FeedBack
         fields = ('message',)
         widgets = {
-            'message': forms.Textarea(attrs={'placeholder':'Feedback Goes Here'})
+            'message': forms.Textarea(attrs={'placeholder':'Feedback Goes Here', 'class': 'text-center'})
         }
         labels = {
             'message': ''

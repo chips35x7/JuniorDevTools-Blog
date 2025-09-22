@@ -1,0 +1,145 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+// GRADIENT BG
+.gradient {
+    background-image: linear-gradient(to right, rgba($primary, 0.95), rgba($secondary, 0.95));
+}
+
+.gradient-text {
+    background-image: linear-gradient(to right, $secondary, $primary-text);
+    background-size: 100%;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    // @media (prefers-color-scheme: light) {
+    //     background-image: linear-gradient(to right, $secondary, $primary);
+    // }
+}
+
+.dark-gradient-text {
+    background-image: linear-gradient(to right, $secondary, $dark);
+    background-size: 100%;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    
+}
+
+.light-gradient-text {
+    background-image: linear-gradient(to right, $secondary, $white);
+    background-size: 100%;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    
+}
+
+.main-title {
+    text-align: center;
+    
+    h2 {
+        position: relative;
+        text-transform: uppercase;
+        @include subHeaderFontSize;
+        font-weight: 700;
+        @include heavyTextShadowEffect;
+
+        span {
+            color: $secondary;
+        }
+        .bg-shadow-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: $gray-900;
+            z-index: -1;
+            transform: translate(-60%, -20%);
+            font-weight: 800;
+            @include subHeaderFontSize;
+            white-space: nowrap;
+
+            // @media (prefers-color-scheme: light) {
+            //     color: $gray-200;
+            // }
+        }
+    }
+}
+
+.sub-header {
+    text-shadow: 2px 4px 5px $secondary;
+    font-size: calc(min(15vw, 2rem) - 0.8rem);
+}
+
+.section-content {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+}
+
+.hero {
+        @include gradient;
+        color: $white;
+        padding: 3rem 1.5rem;
+        padding-top: 6rem;
+        text-align: center;
+        z-index: -20;
+        box-shadow: 0 10px 20px rgba($black, 0.3);
+
+        &__header {
+            h2 {
+                // font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+                font-weight: 300;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 2rem;
+            margin: auto;
+            box-shadow: 0 10px 20px rgba($black, 0.3);
+
+            @include media-breakpoint-up(lg) {
+                max-width: 50%;
+            }
+        }
+    }
+
+.light-mode {
+    .gradient-text {
+        background-image: linear-gradient(to right, $secondary, $primary);
+    }
+
+    .main-title h2 {
+        color: $accent;
+        text-shadow: none;
+
+        .bg-shadow-text {
+            color: $gray-200;
+            display: none;
+        }
+    }
+
+    .hero {
+        @include lightGradient;
+        color: $accent;
+
+        &__header {
+            .main-title {
+                h2 {
+                    span {
+                        // @include lightTextShadowEffect;
+                        color: $dark;
+                    }
+                }
+            }
+        }
+    }
+}

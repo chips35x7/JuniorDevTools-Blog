@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 
+from accounts.views import AccountPrivacyView
+
 from .forms import FeedBackForm
 
 USER_MODEL = get_user_model()
@@ -27,8 +29,16 @@ class AboutPageView(FormView):
         return super().form_valid(form)
 
 
-class SettingsView(LoginRequiredMixin, TemplateView):
+class SettingsView(LoginRequiredMixin, View):
     template_name = 'pages/profile_settings/profile_settings.html'
+
+    def get(self, request, *args, **kwargs):
+        view = AccountPrivacyView.as_view()
+        return view(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        view = AccountPrivacyView.as_view()
+        return view(request, *args, **kwargs)
 
 
 class UpdateUsernameView(LoginRequiredMixin, UpdateView):

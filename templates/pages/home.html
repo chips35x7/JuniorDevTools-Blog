@@ -1,37 +1,30 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {% block title %}
 Home | HelloWorld
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid text-white p-5 text-center"
-  style="min-height: 80vh; background-image: url(/static/images/world1.jpg); background-size: cover; width: 100%;">
-  <div class="col">
-    <h1 class="display-2">Welcome to <strong style="font-family: monospace;"><span
-          style="color: #777">Junior</span><span style="color: rgb(220, 210, 210)">Dev</span><span
-          style="color: rgb(84, 84, 131)">Tools</span></strong>
-    </h1>
-    <h1 class="display-4" style="color: rgb(98, 198, 78); font-family: monospace;"><strong>A Community For Junior
-        Developers</strong></h1>
-    <hr>
-    <p class="lead">Your journey to becoming a pro starts here!</p>
-    <p class="lead">What are you waiting for ?</p>
-    <a class="cta-btn" href="#" style="color: white;">Join The Community</a>
-  </div>
+<div class="home-background">
 </div>
-<!-- <br>
-    <div id="carouselExampleSlidesOnly" class="carousel slide bg-secondary" data-ride="carousel ">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" src="..." alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="..." alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="..." alt="Third slide">
-          </div>
-        </div>
-      </div> -->
+<section class="home pt-5">
+
+  <div class="text-white text-center hero-section" style="background: rgba(0, 255, 0, 0.5);">
+
+    <h1 class="display-4">Welcome to <strong><span>Junior</span><span>Dev</span><span>Tools</span></strong></h1>
+    <hr>
+
+    <h1 class="display-6"><strong>A Community For Junior Developers</strong></h1>
+    <hr>
+
+    <p class="lead">Your journey to becoming a pro starts here!<br>What are you waiting for ?</p>
+    <br>
+
+    <a class="home__cta" href="{% url 'blog_list' %}">Join The Community <i class="fas fa-handshake"></i></a>
+
+  </div>
+
+</section>
+
 {% endblock %}

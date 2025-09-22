@@ -1,0 +1,92 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Blogs | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<section class="p-3 blog-detail">
+
+    <div class="jumbotron jumbotron-fluid bg-secondary m-5" style="color: white; display: inline-block;">
+
+        <div class="container">
+
+            <h1 class="display-4" style="color: inherit;">{{blog_detail.topic}}</h1>
+            <hr>
+
+            <p class="lead">Published by: {{blog_detail.author}}</p>
+
+        </div>
+
+        {% if user.pk == blog_detail.author.pk %}
+        <form class="form blog-status">
+
+            <a href="{% url 'blog_update' blog_detail.pk %}" class="btn btn-success update">Edit Blog</a>
+
+            <a href="{% url 'blog_delete' blog_detail.pk %}" class="btn btn-danger delete">Delete Blog</a>
+
+        </form>
+        {%endif%}
+
+    </div>
+
+    <br><br>
+
+    <p class="lead blog-detail__body">{{blog_detail.body}}</p>
+    <hr>
+
+    <form action="" method="post">
+
+        {%csrf_token%}
+
+        <span>{{form|crispy}}</span>
+
+        <input type="submit" value="Post" class="btn btn-outline-secondary">
+
+    </form>
+    <br><br>
+
+    <p class="lead">{{blog_detail.comment_set.count}} Comments</p>
+
+    {% for comment in blog_detail.comment_set.all %}
+    <div class="card" style="clear: both;">
+
+        <div class="card-header">
+
+            Posted on: {{comment.created_on|date:'d F Y'}}
+            {% if user.id == comment.user_id %}
+
+            <a href="{% url 'comment_delete' comment.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="card-body">
+
+            <blockquote class="blockquote mb-0">
+
+                <p>{{comment}}</p>
+
+                <footer class="blockquote-footer"><cite title="Source Title">{{comment.user}}</cite></footer>
+
+            </blockquote>
+
+        </div>
+
+    </div>
+    <br>
+
+    {% empty %}
+
+    <p class="lead" style="clear: both;">*No comments yet</p>
+
+    {% endfor %}
+
+</section>
+{% endblock %}

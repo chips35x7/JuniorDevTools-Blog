@@ -1,0 +1,18 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.sec1 {
+    display: none;
+    transform: translateY(0) scale(1);
+}
+
+.downloadables {
+    overflow-x: hidden;
+
+}
+
+.light-mode {
+    .downloadables {
+        background-color: inherit;
+    }
+}

@@ -11,3 +11,4 @@ class Users(AbstractUser):
     )
     middle_name = models.CharField(max_length=150, blank=True, null=True)
     profile_picture = models.ImageField(default='fallback.png', upload_to='user_profile_pictures/', blank=True)
+    is_private = models.BooleanField(default=False)

@@ -1,0 +1,34 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Blog Search | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<section class="p-3">
+
+    <h1 class="display-4 pt-5">Search Results</h1>
+    <hr>
+
+    <br>
+
+    {% for blog in blog_list %}
+    <h1 class="display-6"><a href="{% url 'blog_detail' blog.pk %}" style="text-decoration: none;">{{blog.topic}}</a>
+    </h1>
+
+    <p class="lead">Author: {{blog.author}}</p>
+    <br>
+
+    {% empty %}
+
+    <h1 class="display-6">No results matched your search.</h1>
+
+    {%endfor%}
+</section>
+
+{% endblock %}

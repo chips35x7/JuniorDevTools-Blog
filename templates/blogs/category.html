@@ -1,0 +1,59 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Blog Category | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<section class="p-3">
+
+    <h1 class="display-4 pt-5"><strong>{{category}}</strong></h1>
+    <hr>
+
+    <div class="row justify-content-center p-3" style="margin: auto;">
+
+        {% for blog in blogs %}
+        <div class="col-md-3">
+
+            <div class="card text-center">
+
+                <div class="card-header lead">
+
+                    <h5 class="card-title">Topic: {{blog.topic}}</h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    Author: {{blog.author}}
+                    <hr>
+
+                    Category: {{blog.category}}
+                    <hr>
+
+                    <a href="{% url 'blog_detail' blog.pk %}" class="btn" style="background-color: rgb(84, 84, 131);
+                    color: white;">View Full Content</a>
+
+                </div>
+
+                <div class="card-footer text-muted">
+                    Posted On: {{blog.created_on|date:'d F Y'}}
+                </div>
+
+            </div>
+            <br>
+
+        </div>
+
+        {% empty %}
+        <h1 class="display-6">Sorry! There are no posts yet. <br>Try Again Later!</h1>
+        {%endfor%}
+
+    </div>
+
+</section>
+{% endblock %}

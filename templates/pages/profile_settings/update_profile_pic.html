@@ -2,13 +2,15 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Profile Update | HelloWorld
+Profile Update | HelloWorld
 {% endblock %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data" class="profile_pic_form">
+<form method="post" enctype="multipart/form-data" class="profile_pic_form pt-5 p-3">
+    <h1 class="display-4"><strong>Update Profile Picture</strong></h1>
+    <br>
     {{form|crispy}}
     {%csrf_token%}
-    <input type="submit" value="Save Changes" class="btn btn-success">
+    <input type="submit" value="Save Changes" class="btn btn-success w-100">
 </form>
 {% endblock %}

@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Blog Update | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<form action="" method="post" class="blog-form pt-5 p-3">
+
+    <h1 class="display-4"><strong>Edit Blog</strong></h1>
+    <hr>
+
+    <br>
+
+    {%csrf_token%}
+
+    {{form|crispy}}
+
+    <input type="submit" value="Post Blog" class="btn btn-outline-success">
+
+</form>
+{% endblock %}

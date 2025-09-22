@@ -1,9 +1,10 @@
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .forms import UserSignUpForm
+from .forms import UserSignUpForm, PrivacySettingForm
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 USER_MODEL = get_user_model()
 
@@ -40,6 +41,16 @@ class AccountDeleteView(LoginRequiredMixin, DeleteView):
     model = USER_MODEL
     template_name = 'registration/account_delete.html'
     success_url = reverse_lazy('home')
+
+    def get_object(self, queryset = None):
+        obj = get_object_or_404(USER_MODEL, pk=self.request.user.pk, username=self.request.user.username)
+        return obj
+    
+
+class AccountPrivacyView(LoginRequiredMixin, UpdateView):
+    form_class = PrivacySettingForm
+    template_name = 'pages/profile_settings/profile_settings.html'
+    success_url = reverse_lazy('settings')
 
     def get_object(self, queryset = None):
         obj = get_object_or_404(USER_MODEL, pk=self.request.user.pk, username=self.request.user.username)

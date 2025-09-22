@@ -1,0 +1,14 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.sec3 {
+    display: none;
+    transform: translateY(0) scale(1);
+}
+
+.services {
+
+    .icon, h3 {
+        @include subHeaderFontSize;
+    }
+}

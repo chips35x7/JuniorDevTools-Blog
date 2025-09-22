@@ -1,0 +1,53 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Blogs | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<section class="p-3">
+
+    <h1 class="display-4 pt-5" style="text-align: center;">All Blogs</h1>
+    <hr>
+
+    <br>
+
+    {% for blog in blog_list %}
+    <div class="card text-center">
+
+        <div class="card-header lead">
+
+            <h5 class="card-title">Topic: {{blog.topic}}</h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <p class="lead">Author: {{blog.author}}</p>
+
+            <p>Category: {{blog.category}}</p>
+            <hr>
+
+            <a href="{% url 'blog_detail' blog.pk %}" class="btn btn-info text-white">View Blog Content</a>
+
+        </div>
+
+        <div class="card-footer text-muted">
+            Posted On: <em>{{blog.created_on|date:'d F Y'}}</em>
+        </div>
+
+    </div>
+    <br>
+
+    {% empty %}
+
+    <h1 class="display-6">Sorry! There are no posts yet. <br>Try Again Later!</h1>
+
+    {%endfor%}
+
+</section>
+{% endblock %}

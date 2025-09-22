@@ -1,0 +1,96 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.modal-bg {
+    width: 100%;
+    min-height: 100vh;
+    z-index: 1;
+    background-color: rgba($black, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    place-content: center;
+    place-items: center;
+}
+
+.custom-modal {
+    width: min(800px, 80%);
+    height: max(550px, 50vh);
+    background-color: $gray-300;
+    z-index: 10;
+    text-align: center;
+    position: absolute;
+    box-shadow: $box-shadow;
+    padding: 0 1rem;
+    transform: translateY(10%);
+    border-radius: 10px;
+
+    @include media-breakpoint-up(md) {
+        height: max(480px, 45vh);
+    }
+
+    .header {
+        @include darkGradientText;
+    }
+
+    p {
+        margin-top: 50px;
+    }
+
+    &--active {
+        display: flex;
+    }
+
+    &__btn-container {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .close-custom-modal {
+            background-color: $gray-500;
+
+            &:hover {
+                background-color: $gray-600;
+            }
+        }
+
+        .save {
+            background-color: $primary;
+
+            &:hover {
+                background-color: $secondary;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            .close-custom-modal {
+                float: left;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            .save {
+                float: right;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+
+    &__btn {
+        width: 200px;
+        height: 30px;
+        font-family: inherit;
+        font-size: inherit;
+        margin: 5px auto;
+        padding: 20px;
+        border-radius: 5px;
+        border: none;
+        display: grid;
+        place-content: center;
+        background-color: $primary;
+        color: $white;
+    }
+}

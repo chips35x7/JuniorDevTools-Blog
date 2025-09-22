@@ -1,0 +1,14 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.sec5 {
+    display: none;
+    transform: translateY(0) scale(1);
+}
+
+.contact {
+
+    .sub-header {
+        @include subHeaderFontSize;
+    }
+}

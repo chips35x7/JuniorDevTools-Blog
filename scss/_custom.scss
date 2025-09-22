@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+// White and Gray colors
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+
+// Project Variables
+
+$dark:          #191d2b;
+$primary:       #0d1c53;
+$primary-light: $white;
+$secondary:     #3b82f6;
+$accent:        #053069;
+$alternate:     #4338ca;
+$primary-text:  $white;
+$br-sm-2: 14px;
+$transition: all 0.4s ease-in-out;
+$box-shadow-1: 0 3px 15px rgba($black, 0.3);
+$logo-color-1: #777;
+$logo-color-2: rgb(210, 210, 210);
+$logo-color-3: rgb(84, 84, 131);
+
+// Start Reset 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // list-style: none;
+    transition: $transition;
+} 
+
+// img {
+//     display: block;
+//     width: 100%;
+//     height: auto;
+// }
+
+html a {
+    text-decoration: none;
+    color: $alternate;
+    color: lime;
+
+    &:is(:hover, :focus) {
+        // color: $accent;
+        color: green;
+    }
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+}
+
+// @media (prefers-color-scheme: light) {
+//     html a {
+//         text-decoration: none;
+//         color: rgb(0, 202, 44);
+
+//         &:is(:hover, :focus) {
+//             color: rgb(64, 255, 0);
+//         }
+//     }
+// }
+// End Reset
+
+html .body {
+    font-family: 'Nunito Sans', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: $primary;
+    font-size: clamp(1rem, 2.2vh, 1.5rem);
+    color: $white;
+    transform: $transition;
+    overflow-x: hidden;
+    text-align: center;
+    min-height: 100vh;
+
+    // @media (prefers-color-scheme: light) {
+    //     background-color: $gray-200;
+    //     color: $accent;
+    // }
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+}
+
+.offscreen {
+    position: absolute;
+    left: -10000px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.settings {
+    max-width: 10px;
+}
+
+.registration .form-text {
+    color: $white;
+    
+    li {
+        list-style-type: none;
+    }
+}
+
+.blog-status {
+    margin: auto;
+}
+
+// Import bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

@@ -1,0 +1,53 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+.home-background {
+    background-image: url('/static/images/hero.jpeg');
+    min-height: 100vh;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.home {
+    position: relative;
+    min-height: 80vh;
+    display: grid;
+    place-content: center;
+    @include heavyTextShadowEffect;
+
+    .hero-section {
+        max-width: 80%;
+        margin: auto;
+        padding: 10px;
+    }
+
+    .display-4 {
+        span {
+            &:first-child {
+                color: $logo-color-1;
+            }
+            &:nth-child(2) {
+                color: $logo-color-2;
+            }
+            &:last-child {
+                color: $logo-color-3;
+            }
+        }
+    }
+
+    &__cta {
+        text-shadow: none;
+        font-size: 1.5rem;
+        background-color: $dark;
+        color: $white;
+        width: 100%;
+        padding: 30px;
+        border-radius: 5px;
+
+        &:is(:hover, :focus) {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}

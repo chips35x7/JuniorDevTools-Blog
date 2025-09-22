@@ -1,0 +1,25 @@
+@use "custom";
+
+// Import the components
+
+@use 'components/mixins';
+@use 'components/pagination';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/animations';
+@use 'components/typography';
+@use 'components/media';
+@use 'components/modal';
+
+// Import the sections
+
+@use 'sections/home';
+@use 'sections/about';
+@use 'sections/services';
+@use 'sections/portfolio';
+@use 'sections/contact';
+@use 'sections/downloadables';
+
+// Import the page detail styles
+
+@use 'detail/blog.scss';

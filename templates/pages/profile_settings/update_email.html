@@ -2,19 +2,19 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Profile Update | HelloWorld
+Profile Update | HelloWorld
 {% endblock %}
 
 {% block content %}
-    <form action="" method="post" style="width: 50%;">
-        {% if user.email %}
-        <h1 class="display-5"><strong style="color: #777;">Edit Email</strong></h1>
-        {% else %}
-        <h1 class="display-5"><strong style="color: #777;">set Email</strong></h1>
-        {%endif%}
-        <br>
-        {%csrf_token%}
-        {{form|crispy}}
-        <input type="submit" value="Save Changes" class="btn btn-outline-success">
-    </form>
+<form action="" method="post" class="pt-5 p-3">
+    {% if user.email %}
+    <h1 class="display-4"><strong>Edit Email</strong></h1>
+    {% else %}
+    <h1 class="display-4"><strong>Set Email</strong></h1>
+    {%endif%}
+    <br>
+    {%csrf_token%}
+    {{form|crispy}}
+    <input type="submit" value="Save Changes" class="btn btn-outline-success">
+</form>
 {% endblock %}

@@ -1,0 +1,135 @@
+@use '../custom' as *;
+@use '../components/mixins' as *;
+
+@keyframes pulse-border {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes phase-in {
+    0% {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes cheers-glass1 {
+    0% {
+        transform:rotate(0);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+@keyframes cheers-glass2 {
+    0% {
+        transform:rotate(0);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(-30deg);
+    }
+    90% {
+        transform: rotate(0);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes scaleAnimation {
+    0% {
+        transform: translateY(-100%) scaleY(0);
+    }
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+.scaleAnimation {
+    // Initial display
+    display: none;
+    transform: translateY(0) scale(1);
+    transform: translateY(-100%) scale(0);
+    transition: $transition;
+    background-color: $primary;
+
+    // Loading Animation
+    display: block !important;
+    animation-name: scaleAnimation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.animate {
+    animation-name: slideDown;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    transition: all;
+}
+
+.border-animation {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 6rem;
+    height: 6rem;
+    border: 0.55rem solid $white;
+    border-radius: 50%;
+    animation: pulse-border 1.5s linear infinite;
+
+    &--border-1 {
+        animation-delay: 1s;
+    }
+    &--border-2 {
+        animation-delay: 1.5s;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}

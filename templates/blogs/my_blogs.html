@@ -1,0 +1,53 @@
+{% extends '_base.html' %}
+
+{% block title %}
+My Blogs | JuniorDevTools
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<section class="p-3">
+
+    <h1 class="display-4 pt-5">My Blogs</h1>
+    <hr>
+
+    <br>
+
+    {% for blog in my_blogs %}
+    <div class="card text-center">
+
+        <div class="card-header lead">
+
+            Topic: {{blog.topic}}
+
+        </div>
+
+        <div class="card-body">
+
+            <p class="lead">Category: {{blog.category}}</p>
+
+            <a href="{% url 'blog_detail' blog.pk %}" class="btn" style="background-color: rgb(84, 84, 131);
+                    color: white;">View Full Content</a>
+
+        </div>
+
+        <div class="card-footer text-muted">
+
+            Posted On: {{blog.created_on|date:'d F Y'}}
+
+        </div>
+
+    </div>
+    <br>
+
+    {% empty %}
+
+    <h1 class="display-6">You don't have any posts yet.</h1>
+
+    {%endfor%}
+</section>
+
+{% endblock %}
