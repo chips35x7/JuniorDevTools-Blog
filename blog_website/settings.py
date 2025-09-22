@@ -190,7 +190,7 @@ JAZZMIN_SETTINGS = {
 # Backend Storage
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage" if not DEBUG else "django.core.files.storage.FileSystemStorage",
+        "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
